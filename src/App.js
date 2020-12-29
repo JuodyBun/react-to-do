@@ -8,7 +8,7 @@ function Todo({ todo, index, completeTodo }) { //component that is used to retur
   return ( //Todo is called and passed into todo and show text part of the todo (todo.text)
     //When complete button is clicked, it will add the textDecoration styling and cross out the item
     <div 
-      className="todo"
+      className="todo" //.todo in CSS
       style={{ textDecoration: todo.isCompleted ? "line-through" : ""}}
     > 
       {todo.text}
@@ -19,8 +19,8 @@ function Todo({ todo, index, completeTodo }) { //component that is used to retur
     </div>
   );
 };
-//component to create new item for todo app
-function TodoForm({ addTodo }) {
+
+function TodoForm({ addTodo }) {//component to create new item for todo app
   const [value, setValue] = React.useState(""); //setting state; first state empty and the second is how to set the state
 
   const handleSubmit = e => { //variable to handle addTodo function and add item to list
@@ -77,7 +77,8 @@ function App() {
   };
 
   return (
-    <div className="app">
+    //.app & .todo-list in CSS
+    <div className="app"> 
       <div className="todo-list">
         {todos.map((todo, index) => ( //by using map(), new array of items is created by mapping over the todo items from state
         //and displaying them by index
