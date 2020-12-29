@@ -8,6 +8,28 @@ function Todo({ todo }) { //component that is used to return to the main App com
     </div>
   );
 };
+//component to create new item for todo app
+function TodoForm({ addTodo }) {
+  const [value, setValue] = React.useState(""); //setting state; first state empty and the second is how to set the state
+
+  const handleSubmit = e => { //variable to handle addTodo function and add item to list
+    e.preventDefault();
+    if (!value) return;
+    addTodo(value);
+    setValue("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}> 
+      <input //functionality for user to not add empty item to list
+        type="text"
+        className="input"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </form>  
+  );  
+}
 
 function App() {
   const [todos, setTodos] = React.useState([ //first parameter, todos is name of state; setTodos is used to set the state
@@ -27,6 +49,7 @@ function App() {
             todo={todo}
           />  
         ))}
+        <TodoForm addTodo={addTodo} />
       </div>
     </div>
   );
