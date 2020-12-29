@@ -33,15 +33,30 @@ function TodoForm({ addTodo }) {
 
 function App() {
   const [todos, setTodos] = React.useState([ //first parameter, todos is name of state; setTodos is used to set the state
-    { text: "Learn about React" }, //hook of useState is what React uses to hook into the state or lifecycle of the component
-    { text: "Meet Gracie for lunch" }, //then creates an array of objects to have beginning of state
-    { text: "Build epic todo app"}
+    { 
+      text: "Learn about React",
+      isCompleted: false 
+    }, //hook of useState is what React uses to hook into the state or lifecycle of the component
+    { 
+      text: "Meet Gracie for lunch",
+      isCompleted: false 
+    }, //then creates an array of objects to have beginning of state
+    { 
+      text: "Build epic todo app",
+      isCompleted: false
+    }
   ]);
 
   //Function will grab the existing list of items, add on the new item, and display that new list
   const addTodo = text => {
     const newTodos = [...todos, { text }]; //three dots before the todos copy the list for you so that you are able to add on the new to-do item
     setTodos(newTodos);
+  };
+
+  const completeTodo = index => { //Function to mark items complete
+    const newTodos = [...todos]; //also known as spread operator to grab the list
+    newTodos[index].isCompleted = true; //once item is completed
+    setTodos(newTodos); //newTodos is updated 
   };
 
   return (
