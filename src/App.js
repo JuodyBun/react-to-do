@@ -11,6 +11,7 @@ function Todo({ todo, index, completeTodo }) { //component that is used to retur
       {todo.text}
       <div>
         <button onClick={() => completeTodo(index)}>Complete</button>
+        <button onClick={() => removeTodo(index)}>x</button>
       </div>
     </div>
   );
@@ -66,6 +67,12 @@ function App() {
     setTodos(newTodos); //newTodos is updated 
   };
 
+  const removeTodo = index => { //Function to delete an item
+    const newTodos = [...todos]; //spread operator will grab current list and splicing chosen index off array item
+    newTodos.splice(index, 1); //The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+    setTodos(newTodos); //return the new state by setting it with setTodos to be newTodos  
+  };
+
   return (
     <div className="app">
       <div className="todo-list">
@@ -76,6 +83,7 @@ function App() {
             index={index}
             todo={todo}
             completeTodo={completeTodo} 
+            removeTodo={removeTodo}
           />  
         ))}
         <TodoForm addTodo={addTodo} />
