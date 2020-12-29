@@ -38,6 +38,12 @@ function App() {
     { text: "Build epic todo app"}
   ]);
 
+  //Function will grab the existing list of items, add on the new item, and display that new list
+  const addTodo = text => {
+    const newTodos = [...todos, { text }]; //three dots before the todos copy the list for you so that you are able to add on the new to-do item
+    setTodos(newTodos);
+  };
+
   return (
     <div className="app">
       <div className="todo-list">
