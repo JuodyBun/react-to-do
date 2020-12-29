@@ -1,10 +1,17 @@
 import React from 'react';
 import './App.css';
 
-function Todo({ todo }) { //component that is used to return to the main App component
+function Todo({ todo, index, completeTodo }) { //component that is used to return to the main App component
   return ( //Todo is called and passed into todo and show text part of the todo (todo.text)
-    <div className="todo">
+    //When complete button is clicked, it will add the textDecoration styling and cross out the item
+    <div 
+      className="todo"
+      style={{ textDecoration: todo.isCompleted ? "line-through" : ""}}
+    > 
       {todo.text}
+      <div>
+        <button onClick={() => completeTodo(index)}>Complete</button>
+      </div>
     </div>
   );
 };
@@ -65,9 +72,10 @@ function App() {
         {todos.map((todo, index) => ( //by using map(), new array of items is created by mapping over the todo items from state
         //and displaying them by index
           <Todo //^this adds a <div> for app, a <div> for todo-list, and a map of the todos to Todo components
-            key={index}
+            key={index} //^this Todo part returns to the App component
             index={index}
             todo={todo}
+            completeTodo={completeTodo} 
           />  
         ))}
         <TodoForm addTodo={addTodo} />
