@@ -4,7 +4,7 @@ import './App.css';
 //React Hooks are functions and serve as a modular replacement for state and lifecycle methods. 
 //Instead of class components, React Hooks allow you to build functional-based components.
 
-function Todo({ todo, index, completeTodo }) { //component that is used to return to the main App component
+function Todo({ todo, index, completeTodo, removeTodo }) { //component that is used to return to the main App component
   return ( //Todo is called and passed into todo and show text part of the todo (todo.text)
     //When complete button is clicked, it will add the textDecoration styling and cross out the item
     <div 
